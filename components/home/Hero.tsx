@@ -1,6 +1,15 @@
+"use client";
+
+/**
+ * Sección hero de la home: título, subtítulo y dos CTAs (Ver catálogo, Contacto).
+ * Rutas con localizedPath para mantener el idioma actual.
+ */
 import Link from "next/link";
+import { useI18n } from "@/contexts/I18nContext";
 
 export function Hero() {
+  const { t, localizedPath } = useI18n();
+
   return (
     <section
       className="relative overflow-hidden bg-gradient-to-b from-leather-100 to-leather-50 py-20 sm:py-28 lg:py-36"
@@ -11,24 +20,24 @@ export function Hero() {
           id="hero-heading"
           className="font-heading text-4xl font-semibold tracking-tight text-leather-900 sm:text-5xl lg:text-6xl"
         >
-          Cuero artesanal, <span className="text-accent-gold">hecho a mano</span>
+          {t("home.heroTitle")}{" "}
+          <span className="text-accent-gold">{t("home.heroTitleHighlight")}</span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-leather-700 sm:text-xl">
-          Carteras, cinturones y accesorios únicos. Cada pieza sale de nuestro
-          taller con dedicación y oficio.
+          {t("home.heroSubtitle")}
         </p>
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Link
-            href="/catalogo"
+            href={localizedPath("/catalogo")}
             className="inline-flex items-center justify-center rounded-lg bg-leather-800 px-6 py-3 text-sm font-medium text-white shadow-md transition-colors hover:bg-leather-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2"
           >
-            Ver catálogo
+            {t("home.viewCatalog")}
           </Link>
           <Link
-            href="/contacto"
+            href={localizedPath("/contacto")}
             className="inline-flex items-center justify-center rounded-lg border-2 border-leather-700 px-6 py-3 text-sm font-medium text-leather-800 transition-colors hover:bg-leather-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2"
           >
-            Contacto
+            {t("home.contact")}
           </Link>
         </div>
       </div>

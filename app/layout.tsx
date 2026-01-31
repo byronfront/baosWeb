@@ -1,9 +1,19 @@
+/**
+ * Layout raíz de la aplicación.
+ *
+ * Responsabilidades:
+ * - Cargar fuentes (Cormorant Garamond para títulos, DM Sans para cuerpo).
+ * - Definir metadata y viewport por defecto.
+ * - Envolver todo el sitio en <html> y <body>.
+ *
+ * No incluye Header/Footer: esos van en app/[locale]/layout.tsx
+ * para tener acceso al locale y a las traducciones.
+ */
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 
+// Fuente para títulos (estilo serif, artesanal)
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   display: "swap",
@@ -11,6 +21,7 @@ const cormorant = Cormorant_Garamond({
   weight: ["400", "500", "600", "700"],
 });
 
+// Fuente para cuerpo de texto (legible, neutra)
 const dmSans = DM_Sans({
   subsets: ["latin"],
   display: "swap",
@@ -32,11 +43,6 @@ export const metadata: Metadata = {
   },
   description:
     "Artesanía en cuero. Carteras, cinturones y accesorios hechos a mano en nuestro taller. Calidad y diseño único.",
-  keywords: ["cuero artesanal", "carteras", "cinturones", "marroquineria", "hecho a mano"],
-  openGraph: {
-    type: "website",
-    locale: "es_ES",
-  },
   robots: "index, follow",
 };
 
@@ -45,13 +51,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // children aquí es el resultado de app/[locale]/layout.tsx (Header + main + Footer)
   return (
     <html lang="es" className={`${cormorant.variable} ${dmSans.variable}`}>
-      <body className="min-h-screen flex flex-col font-sans">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-      </body>
+      <body className="min-h-screen flex flex-col font-sans">{children}</body>
     </html>
   );
 }

@@ -1,3 +1,10 @@
+/**
+ * Estilos globales: base Tailwind, variables CSS y clases de utilidad.
+ *
+ * - :root: colores de la marca (leather, accent) para uso en JS o referencias.
+ * - base: scroll suave y tipografía/ fondo por defecto del body.
+ * - components: container-tight (contenedor centrado con padding) y focus-ring (accesibilidad).
+ */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -18,9 +25,11 @@
 }
 
 @layer components {
+  /* Contenedor centrado con ancho máximo y padding responsive */
   .container-tight {
     @apply mx-auto max-w-6xl px-4 sm:px-6 lg:px-8;
   }
+  /* Anillo de foco visible para teclado y accesibilidad */
   .focus-ring {
     @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2;
   }

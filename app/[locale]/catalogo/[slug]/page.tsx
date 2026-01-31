@@ -1,3 +1,8 @@
+/**
+ * Página de detalle de producto (ruta: /es/catalogo/[slug], etc.).
+ * Muestra imagen, nombre, precio, descripción y CTAs (WhatsApp, Contacto).
+ * generateStaticParams pregenera todas las combinaciones locale + slug para el build.
+ */
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,17 +11,27 @@ import { ArrowLeft } from "lucide-react";
 import { getProductBySlug, products } from "@/lib/data";
 import { formatPrice, formatWhatsAppUrl } from "@/lib/format";
 import { contact } from "@/lib/data";
+import { getMessages } from "@/lib/i18n/messages";
+import type { Locale } from "@/lib/i18n/config";
 
-type Props = { params: Promise<{ slug: string }> };
+type Props = { params: Promise<{ locale: string; slug: string }> };
 
+/** Pre-genera rutas estáticas para cada producto en cada idioma. */
 export async function generateStaticParams() {
-  return products.map((p) => ({ slug: p.slug }));
+  return products.flatMap((p) =>
+    (["es", "en", "ru"] as const).map((locale) => ({
+      locale,
+      slug: p.slug,
+    }))
+  );
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
+  const { slug, locale } = await params;
   const product = getProductBySlug(slug);
-  if (!product) return { title: "Producto no encontrado" };
+  const messages = getMessages(locale as Locale);
+  if (!product)
+    return { title: messages.product.notFound };
   return {
     title: product.name,
     description: product.shortDescription,
@@ -28,8 +43,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ProductPage({ params }: Props) {
-  const { slug } = await params;
+  const { slug, locale } = await params;
   const product = getProductBySlug(slug);
+  const messages = getMessages(locale as Locale);
+  const base = `/${locale}`;
 
   if (!product) notFound();
 
@@ -40,11 +57,11 @@ export default async function ProductPage({ params }: Props) {
     <div className="py-12 sm:py-16 lg:py-20">
       <div className="container-tight">
         <Link
-          href="/catalogo"
+          href={`${base}/catalogo`}
           className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-leather-700 hover:text-leather-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2 rounded"
         >
           <ArrowLeft size={18} aria-hidden />
-          Volver al catálogo
+          {messages.product.backToCatalog}
         </Link>
 
         <article className="grid gap-10 lg:grid-cols-2 lg:gap-16">
@@ -70,14 +87,14 @@ export default async function ProductPage({ params }: Props) {
               {product.name}
             </h1>
             <p className="mt-4 text-2xl font-semibold text-leather-800">
-              {formatPrice(product.price)}
+              {formatPrice(product.price, "COP", locale)}
             </p>
             <p className="mt-6 text-leather-700 leading-relaxed">
               {product.description}
             </p>
             {product.inStock !== false && (
               <p className="mt-4 text-sm font-medium text-leather-600">
-                Disponible
+                {messages.product.available}
               </p>
             )}
             <div className="mt-8 flex flex-wrap gap-4">
@@ -91,14 +108,14 @@ export default async function ProductPage({ params }: Props) {
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center rounded-lg bg-[#25D366] px-6 py-3 text-sm font-medium text-white shadow-md hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2"
                 >
-                  Consultar por WhatsApp
+                  {messages.product.consultWhatsApp}
                 </a>
               )}
               <Link
-                href="/contacto"
+                href={`${base}/contacto`}
                 className="inline-flex items-center justify-center rounded-lg border-2 border-leather-700 px-6 py-3 text-sm font-medium text-leather-800 hover:bg-leather-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2"
               >
-                Otros contactos
+                {messages.product.otherContacts}
               </Link>
             </div>
           </div>

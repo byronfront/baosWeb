@@ -1,3 +1,9 @@
+/**
+ * Configuración de Next.js.
+ *
+ * - images: formatos AVIF/WebP, tamaños de dispositivo y dominios externos (placehold.co para placeholders).
+ * - experimental.optimizePackageImports: reduce el bundle de lucide-react importando solo los iconos usados.
+ */
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {

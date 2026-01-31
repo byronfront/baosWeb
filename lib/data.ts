@@ -1,3 +1,13 @@
+/**
+ * Datos de la tienda: contacto, productos y categorías.
+ *
+ * - contact: datos de contacto (email, WhatsApp, dirección, Instagram).
+ * - products: listado de productos; cada uno tiene slug, precios, imágenes, categoría y si es destacado.
+ * - categories: claves y etiquetas para filtrar; las etiquetas se traducen en la UI con lib/i18n.
+ *
+ * Para añadir productos: agregar objetos al array products con la misma estructura.
+ * Las imágenes pueden ser URL externas (dominio en next.config images.remotePatterns) o rutas en public/.
+ */
 import type { Product, ContactInfo } from "@/types";
 
 export const contact: ContactInfo = {
@@ -83,18 +93,22 @@ export const products: Product[] = [
   },
 ];
 
+/** Busca un producto por su slug (usado en la página de detalle /catalogo/[slug]). */
 export function getProductBySlug(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);
 }
 
+/** Productos marcados como destacados (se muestran en la home). */
 export function getFeaturedProducts(): Product[] {
   return products.filter((p) => p.featured);
 }
 
+/** Filtra productos por categoría (para futuros filtros en catálogo). */
 export function getProductsByCategory(category: Product["category"]): Product[] {
   return products.filter((p) => p.category === category);
 }
 
+/** Lista de categorías; label se usa como fallback; en la UI se usa t("catalog.categories.{key}"). */
 export const categories: { key: Product["category"]; label: string }[] = [
   { key: "carteras", label: "Carteras" },
   { key: "cinturones", label: "Cinturones" },

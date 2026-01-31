@@ -1,3 +1,9 @@
+/**
+ * Configuración de Tailwind CSS.
+ *
+ * - content: directorios escaneados para clases (app, components, pages).
+ * - theme.extend: paleta leather (tonos cuero), accent (gold/warm), fuentes (--font-body, --font-heading desde layout).
+ */
 import type { Config } from "tailwindcss";
 
 const config: Config = {
