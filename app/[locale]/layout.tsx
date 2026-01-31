@@ -11,7 +11,9 @@ import type { Metadata } from "next";
 import type { Locale } from "@/lib/i18n/config";
 import { locales, isValidLocale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/messages";
+import { getExchangeRates } from "@/lib/exchangeRates";
 import { I18nProvider } from "@/contexts/I18nContext";
+import { ExchangeRatesProvider } from "@/contexts/ExchangeRatesContext";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { notFound } from "next/navigation";
@@ -40,15 +42,18 @@ export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
   if (!isValidLocale(locale)) notFound();
   const messages = getMessages(locale as Locale);
+  const rates = await getExchangeRates();
   const lang = locale === "es" ? "es" : locale === "en" ? "en" : "ru";
 
   return (
-    <I18nProvider locale={locale as Locale} messages={messages}>
-      <div lang={lang} className="contents">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-      </div>
-    </I18nProvider>
+    <ExchangeRatesProvider rates={rates}>
+      <I18nProvider locale={locale as Locale} messages={messages}>
+        <div lang={lang} className="contents">
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
+      </I18nProvider>
+    </ExchangeRatesProvider>
   );
 }

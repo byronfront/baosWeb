@@ -9,10 +9,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { getProductBySlug, products } from "@/lib/data";
-import { formatPrice, formatWhatsAppUrl } from "@/lib/format";
+import { formatWhatsAppUrl } from "@/lib/format";
 import { contact } from "@/lib/data";
 import { getMessages } from "@/lib/i18n/messages";
 import { getProductDisplay } from "@/lib/i18n/productTranslations";
+import { FormattedPrice } from "@/components/ui/FormattedPrice";
 import type { Locale } from "@/lib/i18n/config";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
@@ -90,7 +91,7 @@ export default async function ProductPage({ params }: Props) {
               {display.name}
             </h1>
             <p className="mt-4 text-2xl font-semibold text-leather-800">
-              {formatPrice(product.price, "COP", locale)}
+              <FormattedPrice priceInCOP={product.price} locale={locale as Locale} />
             </p>
             <p className="mt-6 text-leather-700 leading-relaxed">
               {display.description}

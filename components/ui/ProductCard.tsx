@@ -11,6 +11,7 @@ import type { Product } from "@/types";
 import type { Locale } from "@/lib/i18n/config";
 import { formatPrice } from "@/lib/format";
 import { getProductDisplay } from "@/lib/i18n/productTranslations";
+import { FormattedPrice } from "@/components/ui/FormattedPrice";
 
 type ProductCardProps = {
   product: Product;
@@ -50,7 +51,11 @@ export function ProductCard({
               {display.shortDescription}
             </p>
             <p className="mt-2 text-sm font-semibold text-leather-800">
-              {formatPrice(product.price, "COP", locale)}
+              {locale != null ? (
+                <FormattedPrice priceInCOP={product.price} locale={locale} />
+              ) : (
+                formatPrice(product.price, "COP")
+              )}
             </p>
           </div>
         </Link>
@@ -82,7 +87,11 @@ export function ProductCard({
             {display.shortDescription}
           </p>
           <p className="mt-2 text-sm font-semibold text-leather-800">
-            {formatPrice(product.price, "COP", locale)}
+            {locale != null ? (
+              <FormattedPrice priceInCOP={product.price} locale={locale} />
+            ) : (
+              formatPrice(product.price, "COP")
+            )}
           </p>
         </div>
       </Link>
