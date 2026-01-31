@@ -12,6 +12,7 @@ import { getProductBySlug, products } from "@/lib/data";
 import { formatPrice, formatWhatsAppUrl } from "@/lib/format";
 import { contact } from "@/lib/data";
 import { getMessages } from "@/lib/i18n/messages";
+import { getProductDisplay } from "@/lib/i18n/productTranslations";
 import type { Locale } from "@/lib/i18n/config";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
@@ -32,12 +33,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const messages = getMessages(locale as Locale);
   if (!product)
     return { title: messages.product.notFound };
+  const display = getProductDisplay(product, locale as Locale);
   return {
-    title: product.name,
-    description: product.shortDescription,
+    title: display.name,
+    description: display.shortDescription,
     openGraph: {
-      title: product.name,
-      description: product.shortDescription,
+      title: display.name,
+      description: display.shortDescription,
     },
   };
 }
@@ -50,6 +52,7 @@ export default async function ProductPage({ params }: Props) {
 
   if (!product) notFound();
 
+  const display = getProductDisplay(product, locale as Locale);
   const image = product.images[0];
   const imageSrc = image?.src;
 
@@ -69,7 +72,7 @@ export default async function ProductPage({ params }: Props) {
             {imageSrc ? (
               <Image
                 src={imageSrc}
-                alt={image?.alt ?? product.name}
+                alt={image?.alt ?? display.name}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
@@ -77,20 +80,20 @@ export default async function ProductPage({ params }: Props) {
               />
             ) : (
               <div className="absolute inset-0 flex items-center justify-center text-leather-500">
-                {product.name}
+                {display.name}
               </div>
             )}
           </div>
 
           <div>
             <h1 className="font-heading text-3xl font-semibold text-leather-900 sm:text-4xl">
-              {product.name}
+              {display.name}
             </h1>
             <p className="mt-4 text-2xl font-semibold text-leather-800">
               {formatPrice(product.price, "COP", locale)}
             </p>
             <p className="mt-6 text-leather-700 leading-relaxed">
-              {product.description}
+              {display.description}
             </p>
             {product.inStock !== false && (
               <p className="mt-4 text-sm font-medium text-leather-600">
@@ -102,7 +105,7 @@ export default async function ProductPage({ params }: Props) {
                 <a
                   href={formatWhatsAppUrl(
                     contact.whatsapp,
-                    `Hola, me interesa: ${product.name}`
+                    `Hola, me interesa: ${display.name}`
                   )}
                   target="_blank"
                   rel="noopener noreferrer"

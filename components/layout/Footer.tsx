@@ -5,7 +5,7 @@
  * (email, WhatsApp, dirección, Instagram). Todo el texto viene de useI18n().t().
  */
 import Link from "next/link";
-import { Mail, MapPin, Instagram } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Instagram } from "lucide-react";
 import { contact } from "@/lib/data";
 import { formatWhatsAppUrl } from "@/lib/format";
 import { useI18n } from "@/contexts/I18nContext";
@@ -80,6 +80,7 @@ export function Footer() {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 hover:text-accent-gold transition-colors focus:outline-none focus-visible:underline"
                   >
+                    <MessageCircle size={16} aria-hidden />
                     WhatsApp
                   </a>
                 </li>
