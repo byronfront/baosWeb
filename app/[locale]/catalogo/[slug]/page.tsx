@@ -62,14 +62,14 @@ export default async function ProductPage({ params }: Props) {
       <div className="container-tight">
         <Link
           href={`${base}/catalogo`}
-          className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-leather-700 hover:text-leather-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2 rounded"
+          className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-leather-700 hover:text-leather-900 dark:text-leather-300 dark:hover:text-leather-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2 rounded dark:focus-visible:ring-accent-warm dark:focus-visible:ring-offset-leather-950"
         >
           <ArrowLeft size={18} aria-hidden />
           {messages.product.backToCatalog}
         </Link>
 
         <article className="grid gap-10 lg:grid-cols-2 lg:gap-16">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-leather-100 lg:aspect-square">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-leather-100 lg:aspect-square dark:bg-leather-800">
             {imageSrc ? (
               <Image
                 src={imageSrc}
@@ -80,24 +80,24 @@ export default async function ProductPage({ params }: Props) {
                 priority
               />
             ) : (
-              <div className="absolute inset-0 flex items-center justify-center text-leather-500">
+              <div className="absolute inset-0 flex items-center justify-center text-leather-500 dark:text-leather-400">
                 {display.name}
               </div>
             )}
           </div>
 
           <div>
-            <h1 className="font-heading text-3xl font-semibold text-leather-900 sm:text-4xl">
+            <h1 className="font-heading text-3xl font-semibold text-leather-900 sm:text-4xl dark:text-leather-50">
               {display.name}
             </h1>
-            <p className="mt-4 text-2xl font-semibold text-leather-800">
+            <p className="mt-4 text-2xl font-semibold text-leather-800 dark:text-leather-200">
               <FormattedPrice priceInCOP={product.price} locale={locale as Locale} />
             </p>
-            <p className="mt-6 text-leather-700 leading-relaxed">
+            <p className="mt-6 text-leather-700 leading-relaxed dark:text-leather-300">
               {display.description}
             </p>
             {product.inStock !== false && (
-              <p className="mt-4 text-sm font-medium text-leather-600">
+              <p className="mt-4 text-sm font-medium text-leather-600 dark:text-leather-400">
                 {messages.product.available}
               </p>
             )}
@@ -110,14 +110,14 @@ export default async function ProductPage({ params }: Props) {
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-lg bg-[#25D366] px-6 py-3 text-sm font-medium text-white shadow-md hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2"
+                  className="inline-flex items-center justify-center rounded-lg bg-[#25D366] px-6 py-3 text-sm font-medium text-white shadow-md hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 dark:focus-visible:ring-offset-leather-950"
                 >
                   {messages.product.consultWhatsApp}
                 </a>
               )}
               <Link
                 href={`${base}/contacto`}
-                className="inline-flex items-center justify-center rounded-lg border-2 border-leather-700 px-6 py-3 text-sm font-medium text-leather-800 hover:bg-leather-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2"
+                className="inline-flex items-center justify-center rounded-lg border-2 border-leather-700 px-6 py-3 text-sm font-medium text-leather-800 hover:bg-leather-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2 dark:border-leather-500 dark:text-leather-200 dark:hover:bg-leather-800"
               >
                 {messages.product.otherContacts}
               </Link>

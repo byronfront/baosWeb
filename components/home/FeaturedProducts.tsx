@@ -24,13 +24,13 @@ export function FeaturedProducts() {
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-end sm:justify-between">
           <h2
             id="featured-heading"
-            className="font-heading text-3xl font-semibold text-leather-900 sm:text-4xl"
+            className="font-heading text-3xl font-semibold text-leather-900 sm:text-4xl dark:text-leather-50"
           >
             {t("homeFeatured.title")}
           </h2>
           <Link
             href={localizedPath("/catalogo")}
-            className="text-sm font-medium text-leather-700 underline decoration-accent-gold underline-offset-4 hover:text-leather-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2 rounded"
+            className="text-sm font-medium text-leather-700 underline decoration-accent-gold underline-offset-4 hover:text-leather-900 dark:text-leather-300 dark:hover:text-leather-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2 rounded dark:decoration-accent-warm"
           >
             {t("homeFeatured.viewAll")}
           </Link>

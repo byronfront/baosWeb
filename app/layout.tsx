@@ -12,6 +12,8 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/contexts/ThemeContext";
+import { ThemeScript } from "@/components/ThemeScript";
 
 // Fuente para títulos (estilo serif, artesanal)
 const cormorant = Cormorant_Garamond({
@@ -53,8 +55,11 @@ export default function RootLayout({
 }>) {
   // children aquí es el resultado de app/[locale]/layout.tsx (Header + main + Footer)
   return (
-    <html lang="es" className={`${cormorant.variable} ${dmSans.variable}`}>
-      <body className="min-h-screen flex flex-col font-sans">{children}</body>
+    <html lang="es" className={`${cormorant.variable} ${dmSans.variable}`} suppressHydrationWarning>
+      <body className="min-h-screen flex flex-col font-sans">
+        <ThemeScript />
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }

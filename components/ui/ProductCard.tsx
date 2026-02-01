@@ -33,24 +33,24 @@ export function ProductCard({
     ? `${base}/catalogo/${product.slug}`
     : `/catalogo/${product.slug}`;
 
+  const cardClass =
+    "block overflow-hidden rounded-lg border border-leather-200 bg-white shadow-sm transition-shadow hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2 dark:border-leather-700 dark:bg-leather-900 dark:focus-visible:ring-accent-warm dark:focus-visible:ring-offset-leather-950";
+
   if (!imageSrc) {
     return (
       <article className="group">
-        <Link
-          href={productHref}
-          className="block overflow-hidden rounded-lg border border-leather-200 bg-white shadow-sm transition-shadow hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2"
-        >
-          <div className="relative aspect-[4/3] flex items-center justify-center bg-leather-200 text-leather-600 text-sm">
+        <Link href={productHref} className={cardClass}>
+          <div className="relative aspect-[4/3] flex items-center justify-center bg-leather-200 text-leather-600 text-sm dark:bg-leather-800 dark:text-leather-400">
             {display.name}
           </div>
           <div className="p-4">
-            <h2 className="font-heading text-lg font-semibold text-leather-900">
+            <h2 className="font-heading text-lg font-semibold text-leather-900 dark:text-leather-100">
               {display.name}
             </h2>
-            <p className="mt-1 line-clamp-2 text-sm text-leather-600">
+            <p className="mt-1 line-clamp-2 text-sm text-leather-600 dark:text-leather-400">
               {display.shortDescription}
             </p>
-            <p className="mt-2 text-sm font-semibold text-leather-800">
+            <p className="mt-2 text-sm font-semibold text-leather-800 dark:text-leather-200">
               {locale != null ? (
                 <FormattedPrice priceInCOP={product.price} locale={locale} />
               ) : (
@@ -65,11 +65,8 @@ export function ProductCard({
 
   return (
     <article className="group">
-      <Link
-        href={productHref}
-        className="block overflow-hidden rounded-lg border border-leather-200 bg-white shadow-sm transition-shadow hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2"
-      >
-        <div className="relative aspect-[4/3] bg-leather-100">
+      <Link href={productHref} className={cardClass}>
+        <div className="relative aspect-[4/3] bg-leather-100 dark:bg-leather-800">
           <Image
             src={imageSrc}
             alt={image?.alt ?? display.name}
@@ -80,13 +77,13 @@ export function ProductCard({
           />
         </div>
         <div className="p-4">
-          <h2 className="font-heading text-lg font-semibold text-leather-900 group-hover:text-accent-gold transition-colors">
+          <h2 className="font-heading text-lg font-semibold text-leather-900 group-hover:text-accent-gold transition-colors dark:text-leather-100 dark:group-hover:text-accent-warm">
             {display.name}
           </h2>
-          <p className="mt-1 line-clamp-2 text-sm text-leather-600">
+          <p className="mt-1 line-clamp-2 text-sm text-leather-600 dark:text-leather-400">
             {display.shortDescription}
           </p>
-          <p className="mt-2 text-sm font-semibold text-leather-800">
+          <p className="mt-2 text-sm font-semibold text-leather-800 dark:text-leather-200">
             {locale != null ? (
               <FormattedPrice priceInCOP={product.price} locale={locale} />
             ) : (

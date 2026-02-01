@@ -20,7 +20,7 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply antialiased text-leather-950 bg-leather-50;
+    @apply antialiased text-leather-950 bg-leather-50 dark:bg-leather-950 dark:text-leather-100;
   }
 }
 
@@ -31,6 +31,6 @@
   }
   /* Anillo de foco visible para teclado y accesibilidad */
   .focus-ring {
-    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2;
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2 dark:focus-visible:ring-accent-warm dark:focus-visible:ring-offset-leather-950;
   }
 }

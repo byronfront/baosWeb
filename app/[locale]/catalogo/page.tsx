@@ -37,10 +37,10 @@ export default async function CatalogoPage({ params }: Props) {
     <div className="py-12 sm:py-16 lg:py-20">
       <div className="container-tight">
         <header className="mb-12">
-          <h1 className="font-heading text-3xl font-semibold text-leather-900 sm:text-4xl">
+          <h1 className="font-heading text-3xl font-semibold text-leather-900 sm:text-4xl dark:text-leather-50">
             {messages.catalog.title}
           </h1>
-          <p className="mt-4 max-w-2xl text-leather-700">
+          <p className="mt-4 max-w-2xl text-leather-700 dark:text-leather-300">
             {messages.catalog.description}
           </p>
           <nav
@@ -51,7 +51,7 @@ export default async function CatalogoPage({ params }: Props) {
               <Link
                 key={key}
                 href={`${base}/catalogo?categoria=${key}`}
-                className="rounded-full border border-leather-300 bg-white px-4 py-2 text-sm font-medium text-leather-700 transition-colors hover:border-leather-500 hover:bg-leather-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2"
+                className="rounded-full border border-leather-300 bg-white px-4 py-2 text-sm font-medium text-leather-700 transition-colors hover:border-leather-500 hover:bg-leather-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2 dark:border-leather-600 dark:bg-leather-900 dark:text-leather-200 dark:hover:border-leather-500 dark:hover:bg-leather-800 dark:focus-visible:ring-accent-warm dark:focus-visible:ring-offset-leather-950"
               >
                 {t(`catalog.categories.${key}`)}
               </Link>

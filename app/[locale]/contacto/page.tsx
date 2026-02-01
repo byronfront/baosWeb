@@ -28,26 +28,26 @@ export default async function ContactoPage({ params }: Props) {
   return (
     <div className="py-12 sm:py-16 lg:py-20">
       <div className="container-tight max-w-3xl">
-        <h1 className="font-heading text-3xl font-semibold text-leather-900 sm:text-4xl">
+        <h1 className="font-heading text-3xl font-semibold text-leather-900 sm:text-4xl dark:text-leather-50">
           {messages.contact.title}
         </h1>
-        <p className="mt-4 text-leather-700">{messages.contact.intro}</p>
+        <p className="mt-4 text-leather-700 dark:text-leather-300">{messages.contact.intro}</p>
 
         <ul className="mt-10 space-y-6" role="list">
           {contact.email && (
             <li>
               <a
                 href={`mailto:${contact.email}`}
-                className="flex items-start gap-4 rounded-lg border border-leather-200 bg-white p-6 transition-colors hover:border-leather-300 hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2"
+                className="flex items-start gap-4 rounded-lg border border-leather-200 bg-white p-6 transition-colors hover:border-leather-300 hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2 dark:border-leather-700 dark:bg-leather-900 dark:hover:border-leather-600 dark:focus-visible:ring-accent-warm dark:focus-visible:ring-offset-leather-950"
               >
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-leather-100 text-leather-700">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-leather-100 text-leather-700 dark:bg-leather-800 dark:text-leather-300">
                   <Mail size={24} aria-hidden />
                 </span>
                 <div>
-                  <span className="font-medium text-leather-900">
+                  <span className="font-medium text-leather-900 dark:text-leather-100">
                     {messages.contact.email}
                   </span>
-                  <p className="mt-1 text-leather-700">{contact.email}</p>
+                  <p className="mt-1 text-leather-700 dark:text-leather-300">{contact.email}</p>
                 </div>
               </a>
             </li>
@@ -58,19 +58,19 @@ export default async function ContactoPage({ params }: Props) {
                 href={formatWhatsAppUrl(contact.whatsapp)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-4 rounded-lg border border-leather-200 bg-white p-6 transition-colors hover:border-leather-300 hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2"
+                className="flex items-start gap-4 rounded-lg border border-leather-200 bg-white p-6 transition-colors hover:border-leather-300 hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2 dark:border-leather-700 dark:bg-leather-900 dark:hover:border-leather-600 dark:focus-visible:ring-accent-warm dark:focus-visible:ring-offset-leather-950"
               >
                 <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#25D366]/10 text-[#25D366]">
                   <MessageCircle size={24} aria-hidden />
                 </span>
                 <div>
-                  <span className="font-medium text-leather-900">
+                  <span className="font-medium text-leather-900 dark:text-leather-100">
                     {messages.contact.whatsapp}
                   </span>
-                  <p className="mt-1 text-leather-700">
+                  <p className="mt-1 text-leather-700 dark:text-leather-300">
                     {contact.phone ?? contact.whatsapp}
                   </p>
-                  <p className="mt-1 text-sm text-leather-600">
+                  <p className="mt-1 text-sm text-leather-600 dark:text-leather-400">
                     {messages.contact.clickToOpenWhatsApp}
                   </p>
                 </div>
@@ -79,15 +79,15 @@ export default async function ContactoPage({ params }: Props) {
           )}
           {contact.address && (
             <li>
-              <div className="flex items-start gap-4 rounded-lg border border-leather-200 bg-white p-6">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-leather-100 text-leather-700">
+              <div className="flex items-start gap-4 rounded-lg border border-leather-200 bg-white p-6 dark:border-leather-700 dark:bg-leather-900">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-leather-100 text-leather-700 dark:bg-leather-800 dark:text-leather-300">
                   <MapPin size={24} aria-hidden />
                 </span>
                 <div>
-                  <span className="font-medium text-leather-900">
+                  <span className="font-medium text-leather-900 dark:text-leather-100">
                     {messages.contact.address}
                   </span>
-                  <p className="mt-1 text-leather-700">{contact.address}</p>
+                  <p className="mt-1 text-leather-700 dark:text-leather-300">{contact.address}</p>
                 </div>
               </div>
             </li>
@@ -98,16 +98,16 @@ export default async function ContactoPage({ params }: Props) {
                 href={`https://instagram.com/${contact.instagram.replace("@", "")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-4 rounded-lg border border-leather-200 bg-white p-6 transition-colors hover:border-leather-300 hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2"
+                className="flex items-start gap-4 rounded-lg border border-leather-200 bg-white p-6 transition-colors hover:border-leather-300 hover:shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2 dark:border-leather-700 dark:bg-leather-900 dark:hover:border-leather-600 dark:focus-visible:ring-accent-warm dark:focus-visible:ring-offset-leather-950"
               >
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-leather-100 text-leather-700">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-leather-100 text-leather-700 dark:bg-leather-800 dark:text-leather-300">
                   <Instagram size={24} aria-hidden />
                 </span>
                 <div>
-                  <span className="font-medium text-leather-900">
+                  <span className="font-medium text-leather-900 dark:text-leather-100">
                     {messages.contact.instagram}
                   </span>
-                  <p className="mt-1 text-leather-700">@{contact.instagram}</p>
+                  <p className="mt-1 text-leather-700 dark:text-leather-300">@{contact.instagram}</p>
                 </div>
               </a>
             </li>

@@ -14,25 +14,25 @@ export function Footer() {
   const { t, localizedPath } = useI18n();
 
   return (
-    <footer className="border-t border-leather-200 bg-leather-100 text-leather-800">
+    <footer className="border-t border-leather-200 bg-leather-100 text-leather-800 dark:border-leather-800 dark:bg-leather-900 dark:text-leather-200">
       <div className="container-tight py-12 md:py-16">
         <div className="grid gap-10 md:grid-cols-3 md:gap-8">
           <div>
-            <p className="font-heading text-xl font-semibold text-leather-900">
+            <p className="font-heading text-xl font-semibold text-leather-900 dark:text-leather-100">
               {t("common.brand")}
             </p>
-            <p className="mt-2 text-sm">{t("footer.tagline")}</p>
+            <p className="mt-2 text-sm dark:text-leather-300">{t("footer.tagline")}</p>
           </div>
 
           <div>
-            <p className="text-sm font-semibold text-leather-900">
+            <p className="text-sm font-semibold text-leather-900 dark:text-leather-100">
               {t("footer.links")}
             </p>
             <ul className="mt-3 space-y-2 text-sm">
               <li>
                 <Link
                   href={localizedPath("/")}
-                  className="hover:text-accent-gold transition-colors focus:outline-none focus-visible:underline"
+                  className="hover:text-accent-gold transition-colors focus:outline-none focus-visible:underline dark:hover:text-accent-warm"
                 >
                   {t("nav.home")}
                 </Link>
@@ -40,7 +40,7 @@ export function Footer() {
               <li>
                 <Link
                   href={localizedPath("/catalogo")}
-                  className="hover:text-accent-gold transition-colors focus:outline-none focus-visible:underline"
+                  className="hover:text-accent-gold transition-colors focus:outline-none focus-visible:underline dark:hover:text-accent-warm"
                 >
                   {t("nav.catalog")}
                 </Link>
@@ -48,7 +48,7 @@ export function Footer() {
               <li>
                 <Link
                   href={localizedPath("/contacto")}
-                  className="hover:text-accent-gold transition-colors focus:outline-none focus-visible:underline"
+                  className="hover:text-accent-gold transition-colors focus:outline-none focus-visible:underline dark:hover:text-accent-warm"
                 >
                   {t("nav.contact")}
                 </Link>
@@ -57,7 +57,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-sm font-semibold text-leather-900">
+            <p className="text-sm font-semibold text-leather-900 dark:text-leather-100">
               {t("footer.contact")}
             </p>
             <ul className="mt-3 space-y-3 text-sm">
@@ -108,7 +108,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-leather-200 pt-8 text-center text-sm text-leather-600">
+        <div className="mt-10 border-t border-leather-200 dark:border-leather-700 pt-8 text-center text-sm text-leather-600 dark:text-leather-400">
           <p>
             © {new Date().getFullYear()} {t("common.brand")}. {t("footer.madeWith")}
           </p>
