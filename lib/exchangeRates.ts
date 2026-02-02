@@ -1,7 +1,7 @@
 /**
  * Tipos de cambio para convertir precios (base: COP) a USD y RUB.
  * Se obtienen de Frankfurter (ECB), sin API key, actualizados diariamente.
- * Uso: getExchangeRates() con caché 24h; convertAndFormatPrice(priceCOP, locale, rates) para mostrar precio.
+ * Uso: getExchangeRates() sin caché (se actualiza en cada carga); convertAndFormatPrice(priceCOP, locale, rates) para mostrar precio.
  */
 import type { Locale } from "@/lib/i18n/config";
 import { formatPrice } from "@/lib/format";
@@ -28,12 +28,12 @@ export type ExchangeRates = {
 
 /**
  * Obtiene tipos de cambio COP → USD y COP → RUB.
- * Next.js cachea la respuesta 24h (revalidate: 86400).
+ * Se ejecuta en cada carga de página (sin caché).
  */
 export async function getExchangeRates(): Promise<ExchangeRates> {
   const url = `${RATES_API_URL}?${RATES_QUERY}`;
   const res = await fetch(url, {
-    next: { revalidate: 86400 },
+    cache: "no-store",
   });
 
   if (!res.ok) {

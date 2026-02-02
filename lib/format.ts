@@ -11,6 +11,7 @@ const localeToNumberFormat: Record<string, string> = {
 
 /**
  * Formatea un precio como moneda según el idioma actual.
+ * COP y RUB sin decimales; USD con 2 decimales.
  * @param price - Valor numérico.
  * @param currency - Código ISO (ej. COP, USD).
  * @param locale - Idioma del sitio (es | en | ru) para formato regional.
@@ -22,11 +23,12 @@ export function formatPrice(
 ): string {
   const localeKey = locale ?? "es";
   const numberLocale = localeToNumberFormat[localeKey] ?? "es-CO";
+  const fractionDigits = currency === "USD" ? 2 : 0;
   return new Intl.NumberFormat(numberLocale, {
     style: "currency",
     currency,
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
+    minimumFractionDigits: fractionDigits,
+    maximumFractionDigits: fractionDigits,
   }).format(price);
 }
 
