@@ -19,18 +19,18 @@ export const productTranslations: Record<
 > = {
   "1": {
     en: {
-      name: "Medieval bag",
+      name: "Vintage wallet",
       shortDescription:
-        "Leather medieval-style bag. Handmade.",
+        "Vintage-style cowhide wallet. Handmade.",
       description:
-        "Leather medieval-style bag. Timeless design, ideal for everyday use. Each piece is unique due to the natural variations of the leather.",
+        "Vintage-style cowhide wallet. Timeless design, ideal for everyday use. Each piece is unique due to the natural variations of the leather.",
     },
     ru: {
-      name: "Средневековая сумка",
+      name: "Винтажный кошелёк",
       shortDescription:
-        "Кожаная сумка в средневековом стиле. Ручная работа.",
+        "Кошелёк из воловьей кожи в винтажном стиле. Ручная работа.",
       description:
-        "Кожаная сумка в средневековом стиле. Классический дизайн, идеально для повседневного использования. Каждое изделие уникально благодаря естественным вариациям кожи.",
+        "Кошелёк из воловьей кожи в винтажном стиле. Классический дизайн, идеально для повседневного использования. Каждое изделие уникально благодаря естественным вариациям кожи.",
     },
   },
   "2": {

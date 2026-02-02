@@ -21,19 +21,19 @@ export const contact: ContactInfo = {
 export const products: Product[] = [
   {
     id: "1",
-    slug: "monedero-medieval",
-    name: "Bolsa medieval",
-    shortDescription: "Bolsa de cuero vacuno tipo bolsa medieval. Hecha a mano.",
+    slug: "monedero-vintage", 
+    name: "Monedero vintage",
+    shortDescription: "Monedero de cuero vacuno tipo monedero vintage. Hecha a mano.",
     description:
-      "Bolsa de cuero vacuno tipo bolsa medieval. Diseño atemporal, ideal para uso diario. Cada pieza es única por las variaciones naturales del cuero.",
+      "Monedero de cuero vacuno tipo monedero vintage. Diseño atemporal, ideal para uso diario. Cada pieza es única por las variaciones naturales del cuero.",
     price: 25000,
     category: "accesorios",
     featured: true,
     inStock: true,
     images: [
       {
-        src: "https://placehold.co/800x600/f2ebe0/5e3d2c?text=Bolsa+medieval",
-        alt: "Bolsa medieval - vista frontal",
+        src: "https://placehold.co/800x600/f2ebe0/5e3d2c?text=Monedero+vintage",
+        alt: "Monedero vintage - vista frontal",
       },
     ],
   },
